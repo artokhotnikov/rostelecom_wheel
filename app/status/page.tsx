@@ -21,6 +21,11 @@ export default function Status() {
 
   useEffect(() => {
     fetchPrizes();
+    const interval = setInterval(async () => {
+      await fetchPrizes();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []);
   return (
     <div className="relative w-screen min-h-screen bg-[#F6F6F6] py-10 px-20">
